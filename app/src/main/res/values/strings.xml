@@ -2,10 +2,12 @@
     <string name="app_name">ImageSearch</string>
     <string name="menu_about">About</string>
     <string name="image">image</string>
+    <string name="close">Close</string>
+    <string name="licenses">Licenses</string>
     <string name="intent_key">intent_key</string>
     <string name="network_error_title">Can\'t Connect</string>
     <string name="network_error_message">We are unable to connect at this time, please check your network settings.</string>
-    <string name="license_text">This application uses code from the open source project Picasso (http://square.github.io/picasso/).</string>
+    <string name="license_text">"This application uses code from the open source project &#60;a href=\"http://square.github.io/picasso/\"&#62;Picasso&#60;/a&#62; released under the &#60;a href=\"http://www.apache.org/licenses/LICENSE-2.0.html\"a&#62;Apache License, Version 2.0&#60;/a&#62;</string>
     <string name="wiki_api">https://en.wikipedia.org/w/api.php?action=query&amp;prop=pageimages&amp;format=json&amp;piprop=thumbnail&amp;pithumbsize=96&amp;pilimit=50&amp;generator=prefixsearch&amp;gpssearch=%1$s&amp;gpslimit=50</string>
 
     <!-- JSON constants -->

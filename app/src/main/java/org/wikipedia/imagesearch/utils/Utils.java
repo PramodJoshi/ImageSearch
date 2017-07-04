@@ -5,6 +5,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
@@ -96,7 +100,7 @@ public class Utils {
      *
      * @param bufferedReader A BufferedReader to close
      */
-    public static void closeBufferedReader(BufferedReader bufferedReader) {
+    static void closeBufferedReader(BufferedReader bufferedReader) {
         if (bufferedReader == null) {
             return;
         }
@@ -113,7 +117,7 @@ public class Utils {
      *
      * @param conn A HttpURLConnection to close
      */
-    public static void closeHttpConnection(HttpURLConnection conn) {
+    static void closeHttpConnection(HttpURLConnection conn) {
         if (conn == null) {
             return;
         }
@@ -154,23 +158,20 @@ public class Utils {
     }
 
     /**
-     * Displays custom alert message
+     * Displays fragment dialog
      *
      * @param context application context
      */
-    public static void displayAlert(Context context, String alertMsg) {
-        AlertDialog.Builder ad = new AlertDialog.Builder(context);
-        ad.setTitle(context.getResources().getString(R.string.app_name));
-        ad.setMessage(alertMsg);
-        ad.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-
-        AlertDialog alert = ad.create();
-        if(!alert.isShowing()) {
-            alert.show();
+    public static void showDialog(Context context, Fragment fragment, String tag) {
+        // in a transaction.  We also want to remove any currently showing
+        // dialog, so make our own transaction and take care of that here.
+        FragmentTransaction ft = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
+        Fragment prev = ((FragmentActivity) context).getSupportFragmentManager().findFragmentByTag(tag);
+        if (prev != null) {
+            ft.remove(prev);
         }
-        ((TextView)alert.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+
+        ft.add(0, fragment);
+        ft.commit();
     }
 }

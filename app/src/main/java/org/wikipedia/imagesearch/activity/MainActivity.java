@@ -1,6 +1,7 @@
 package org.wikipedia.imagesearch.activity;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import org.wikipedia.imagesearch.R;
 import org.wikipedia.imagesearch.adapter.LoadImage;
 import org.wikipedia.imagesearch.utils.ImageTask;
+import org.wikipedia.imagesearch.utils.LicenseDialog;
 import org.wikipedia.imagesearch.utils.Utils;
 
 import java.util.ArrayList;
@@ -105,7 +107,10 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.menu_about){
-            Utils.displayAlert(MainActivity.this, getString(R.string.license_text));
+            String dialogTitle = getString(R.string.licenses);
+            String dialogText = getString(R.string.license_text);
+            Fragment fragment = LicenseDialog.newInstance(dialogTitle, dialogText);
+            Utils.showDialog(MainActivity.this, fragment, "LICENSE_DIALOG");
             return true;
         }
         return super.onOptionsItemSelected(item);
