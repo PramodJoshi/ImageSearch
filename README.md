@@ -2,7 +2,7 @@
 
 This repository contains the source code for the ImageSearch app.
 
-ImageSearch app queries Wikipedia API with the user's input in the EditText field and displays the list of image results based on the match (if image title starts with input text) between input text and image title. List result updates with the text change in EditText field.
+ImageSearch app queries Wikipedia API with the user's input in the EditText field and displays the list of image results based on the match (if image title starts with input text) between input text and image title. Image list result updates with the text change in EditText field.
 
 # Screenshots
 
